@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="100b1474ea39434aade2931aad966004" Name="Diagram1">
+        <EntityTypeShape EntityType="gr691_fnvModel.Employees" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_fnvModel.Instruction" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_fnvModel.Instruction_Employees" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_fnvModel.Organization" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_fnvModel.Organization_Employees" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_fnvModel.Position" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gr691_fnvModel.View_Instruction" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="gr691_fnvModel.FK__Employees__FK_Po__2D536BE9" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_fnvModel.FK__Instructi__FK_Em__3C95AF79" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_fnvModel.FK__Instructi__FK_In__37D0FA5C" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_fnvModel.FK__Organizat__FK_Em__330C453F" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_fnvModel.FK__Instructi__FK_In__3BA18B40" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_fnvModel.FK__Instructi__FK_Vi__38C51E95" ManuallyRouted="false" />
+        <AssociationConnector Association="gr691_fnvModel.FK__Organizat__FK_Or__32182106" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="gr691_fnvModel.User_Auto" Width="1.5" PointX="5.25" PointY="8" />
+        <AssociationConnector Association="gr691_fnvModel.FK__User_Auto__FK_Em__5A261260" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
