@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище gr691_fnvModelContainer" CdmEntityContainer="gr691_fnvEntities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="gr691_fnvModel.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="ID_Employees" ColumnName="ID_Employees" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="FK_Position" ColumnName="FK_Position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instruction">
+      <EntityTypeMapping TypeName="gr691_fnvModel.Instruction">
+        <MappingFragment StoreEntitySet="Instruction">
+          <ScalarProperty Name="ID_Instruction" ColumnName="ID_Instruction" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="FK_InstructionEmployees" ColumnName="FK_InstructionEmployees" />
+          <ScalarProperty Name="FK_ViewInstruction" ColumnName="FK_ViewInstruction" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instruction_Employees">
+      <EntityTypeMapping TypeName="gr691_fnvModel.Instruction_Employees">
+        <MappingFragment StoreEntitySet="Instruction_Employees">
+          <ScalarProperty Name="ID_Instruction_Employees" ColumnName="ID_Instruction_Employees" />
+          <ScalarProperty Name="FK_Instruction" ColumnName="FK_Instruction" />
+          <ScalarProperty Name="FK_Employees" ColumnName="FK_Employees" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organization">
+      <EntityTypeMapping TypeName="gr691_fnvModel.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="ID_Organization" ColumnName="ID_Organization" />
+          <ScalarProperty Name="View" ColumnName="View" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LegalAddress" ColumnName="LegalAddress" />
+          <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organization_Employees">
+      <EntityTypeMapping TypeName="gr691_fnvModel.Organization_Employees">
+        <MappingFragment StoreEntitySet="Organization_Employees">
+          <ScalarProperty Name="ID_Organization_Employees" ColumnName="ID_Organization_Employees" />
+          <ScalarProperty Name="FK_Organization" ColumnName="FK_Organization" />
+          <ScalarProperty Name="FK_Employees" ColumnName="FK_Employees" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Position">
+      <EntityTypeMapping TypeName="gr691_fnvModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="ID_Position" ColumnName="ID_Position" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_Instruction">
+      <EntityTypeMapping TypeName="gr691_fnvModel.View_Instruction">
+        <MappingFragment StoreEntitySet="View_Instruction">
+          <ScalarProperty Name="ID_View_Instruction" ColumnName="ID_View_Instruction" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Auto">
+      <EntityTypeMapping TypeName="gr691_fnvModel.User_Auto">
+        <MappingFragment StoreEntitySet="User_Auto">
+          <ScalarProperty Name="FK_Employee" ColumnName="FK_Employee" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="ID_UserAuto" ColumnName="ID_UserAuto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

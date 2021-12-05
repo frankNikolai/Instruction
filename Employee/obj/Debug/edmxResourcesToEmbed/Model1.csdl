@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gr691_fnvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="ID_Employees" />
+    </Key>
+    <Property Name="ID_Employees" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="FK_Position" Type="Int32" />
+    <NavigationProperty Name="Position" Relationship="Self.FK__Employees__FK_Po__2D536BE9" FromRole="Employees" ToRole="Position" />
+    <NavigationProperty Name="Instruction_Employees" Relationship="Self.FK__Instructi__FK_Em__3C95AF79" FromRole="Employees" ToRole="Instruction_Employees" />
+    <NavigationProperty Name="Instruction" Relationship="Self.FK__Instructi__FK_In__37D0FA5C" FromRole="Employees" ToRole="Instruction" />
+    <NavigationProperty Name="Organization_Employees" Relationship="Self.FK__Organizat__FK_Em__330C453F" FromRole="Employees" ToRole="Organization_Employees" />
+    <NavigationProperty Name="User_Auto" Relationship="gr691_fnvModel.FK__User_Auto__FK_Em__5A261260" FromRole="Employees" ToRole="User_Auto" />
+  </EntityType>
+  <EntityType Name="Instruction">
+    <Key>
+      <PropertyRef Name="ID_Instruction" />
+    </Key>
+    <Property Name="ID_Instruction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="FK_InstructionEmployees" Type="Int32" />
+    <Property Name="FK_ViewInstruction" Type="Int32" />
+    <Property Name="Note" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Instructi__FK_In__37D0FA5C" FromRole="Instruction" ToRole="Employees" />
+    <NavigationProperty Name="Instruction_Employees" Relationship="Self.FK__Instructi__FK_In__3BA18B40" FromRole="Instruction" ToRole="Instruction_Employees" />
+    <NavigationProperty Name="View_Instruction" Relationship="Self.FK__Instructi__FK_Vi__38C51E95" FromRole="Instruction" ToRole="View_Instruction" />
+  </EntityType>
+  <EntityType Name="Instruction_Employees">
+    <Key>
+      <PropertyRef Name="ID_Instruction_Employees" />
+    </Key>
+    <Property Name="ID_Instruction_Employees" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_Instruction" Type="Int32" />
+    <Property Name="FK_Employees" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Instructi__FK_Em__3C95AF79" FromRole="Instruction_Employees" ToRole="Employees" />
+    <NavigationProperty Name="Instruction" Relationship="Self.FK__Instructi__FK_In__3BA18B40" FromRole="Instruction_Employees" ToRole="Instruction" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="ID_Organization" />
+    </Key>
+    <Property Name="ID_Organization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="View" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+    <Property Name="LegalAddress" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Supervisor" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Organization_Employees" Relationship="Self.FK__Organizat__FK_Or__32182106" FromRole="Organization" ToRole="Organization_Employees" />
+  </EntityType>
+  <EntityType Name="Organization_Employees">
+    <Key>
+      <PropertyRef Name="ID_Organization_Employees" />
+    </Key>
+    <Property Name="ID_Organization_Employees" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_Organization" Type="Int32" />
+    <Property Name="FK_Employees" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Organizat__FK_Em__330C453F" FromRole="Organization_Employees" ToRole="Employees" />
+    <NavigationProperty Name="Organization" Relationship="Self.FK__Organizat__FK_Or__32182106" FromRole="Organization_Employees" ToRole="Organization" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="ID_Position" />
+    </Key>
+    <Property Name="ID_Position" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__FK_Po__2D536BE9" FromRole="Position" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="View_Instruction">
+    <Key>
+      <PropertyRef Name="ID_View_Instruction" />
+    </Key>
+    <Property Name="ID_View_Instruction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Instruction" Relationship="Self.FK__Instructi__FK_Vi__38C51E95" FromRole="View_Instruction" ToRole="Instruction" />
+  </EntityType>
+  <Association Name="FK__Employees__FK_Po__2D536BE9">
+    <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="ID_Position" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="FK_Position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Instructi__FK_Em__3C95AF79">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Instruction_Employees" Type="Self.Instruction_Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID_Employees" />
+      </Principal>
+      <Dependent Role="Instruction_Employees">
+        <PropertyRef Name="FK_Employees" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Instructi__FK_In__37D0FA5C">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Instruction" Type="Self.Instruction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID_Employees" />
+      </Principal>
+      <Dependent Role="Instruction">
+        <PropertyRef Name="FK_InstructionEmployees" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Organizat__FK_Em__330C453F">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Organization_Employees" Type="Self.Organization_Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID_Employees" />
+      </Principal>
+      <Dependent Role="Organization_Employees">
+        <PropertyRef Name="FK_Employees" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Instructi__FK_In__3BA18B40">
+    <End Role="Instruction" Type="Self.Instruction" Multiplicity="0..1" />
+    <End Role="Instruction_Employees" Type="Self.Instruction_Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instruction">
+        <PropertyRef Name="ID_Instruction" />
+      </Principal>
+      <Dependent Role="Instruction_Employees">
+        <PropertyRef Name="FK_Instruction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Instructi__FK_Vi__38C51E95">
+    <End Role="View_Instruction" Type="Self.View_Instruction" Multiplicity="0..1" />
+    <End Role="Instruction" Type="Self.Instruction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="View_Instruction">
+        <PropertyRef Name="ID_View_Instruction" />
+      </Principal>
+      <Dependent Role="Instruction">
+        <PropertyRef Name="FK_ViewInstruction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Organizat__FK_Or__32182106">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+    <End Role="Organization_Employees" Type="Self.Organization_Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID_Organization" />
+      </Principal>
+      <Dependent Role="Organization_Employees">
+        <PropertyRef Name="FK_Organization" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gr691_fnvEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="Instruction" EntityType="Self.Instruction" />
+    <EntitySet Name="Instruction_Employees" EntityType="Self.Instruction_Employees" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" />
+    <EntitySet Name="Organization_Employees" EntityType="Self.Organization_Employees" />
+    <EntitySet Name="Position" EntityType="Self.Position" />
+    <EntitySet Name="View_Instruction" EntityType="Self.View_Instruction" />
+    <AssociationSet Name="FK__Employees__FK_Po__2D536BE9" Association="Self.FK__Employees__FK_Po__2D536BE9">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Instructi__FK_Em__3C95AF79" Association="Self.FK__Instructi__FK_Em__3C95AF79">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Instruction_Employees" EntitySet="Instruction_Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Instructi__FK_In__37D0FA5C" Association="Self.FK__Instructi__FK_In__37D0FA5C">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Instruction" EntitySet="Instruction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Organizat__FK_Em__330C453F" Association="Self.FK__Organizat__FK_Em__330C453F">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Organization_Employees" EntitySet="Organization_Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Instructi__FK_In__3BA18B40" Association="Self.FK__Instructi__FK_In__3BA18B40">
+      <End Role="Instruction" EntitySet="Instruction" />
+      <End Role="Instruction_Employees" EntitySet="Instruction_Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Instructi__FK_Vi__38C51E95" Association="Self.FK__Instructi__FK_Vi__38C51E95">
+      <End Role="View_Instruction" EntitySet="View_Instruction" />
+      <End Role="Instruction" EntitySet="Instruction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Organizat__FK_Or__32182106" Association="Self.FK__Organizat__FK_Or__32182106">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Organization_Employees" EntitySet="Organization_Employees" />
+    </AssociationSet>
+    <EntitySet Name="User_Auto" EntityType="gr691_fnvModel.User_Auto" />
+    <AssociationSet Name="FK__User_Auto__FK_Em__5A261260" Association="gr691_fnvModel.FK__User_Auto__FK_Em__5A261260">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="User_Auto" EntitySet="User_Auto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User_Auto">
+    <Key>
+      <PropertyRef Name="ID_UserAuto" />
+    </Key>
+    <Property Name="ID_UserAuto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FK_Employee" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="gr691_fnvModel.FK__User_Auto__FK_Em__5A261260" FromRole="User_Auto" ToRole="Employees" />
+  </EntityType>
+  <Association Name="FK__User_Auto__FK_Em__5A261260">
+    <End Type="gr691_fnvModel.Employees" Role="Employees" Multiplicity="0..1" />
+    <End Type="gr691_fnvModel.User_Auto" Role="User_Auto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID_Employees" />
+      </Principal>
+      <Dependent Role="User_Auto">
+        <PropertyRef Name="FK_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

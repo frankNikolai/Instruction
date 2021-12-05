@@ -50,7 +50,11 @@ namespace Employee
                     en++;
                 }
 
-                if (txtLogin.Text == (from i in entities.User_Auto select i.Login).SingleOrDefault())
+                string txtlog = txtLogin.Text;
+
+                string log = (from i in entities.User_Auto where txtlog == i.Login select i.Login).SingleOrDefault();
+
+                if (log != null)
                 {
                     error.Append($"{en}. Логин занят\n\n");
                     en++;
